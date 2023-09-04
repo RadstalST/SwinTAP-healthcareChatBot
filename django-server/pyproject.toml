@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "django-server"
+version = "0.1.0"
+description = ""
+authors = ["Suchat Tangjarukij <125326168+RadstalST@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "django_server"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "4.2.4"
+pymongo = {extras = ["gssapi", "snappy", "srv", "tls"], version = "^4.5.0"}
+dnspython = "^2.4.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
