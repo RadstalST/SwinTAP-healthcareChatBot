@@ -82,8 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'chat.db',
-
-    }
+    },
 }
 CELERY_CACHE_BACKEND = 'default'
 
