@@ -14,7 +14,7 @@ class Chat(models.Model):
     last_message = models.ForeignKey("Message", on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.owner.username}"
     
 class Message(models.Model):
     chat_id = models.ForeignKey(Chat, on_delete=models.PROTECT, related_name="messages")
@@ -26,4 +26,4 @@ class Message(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.author.username} - {self.content[:20]}"
+        return f"{self.user_id.username} - {self.content[:20]}"
