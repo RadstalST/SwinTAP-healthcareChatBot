@@ -1,0 +1,68 @@
+{% extends "chat-base.html" %}
+
+{% block title %}My amazing blog{% endblock %}
+
+{% block content %}
+<div class="m-5 p-5 flex flex-col grow bg-base-100 rounded-2xl	" >
+    <div class="grow flex flex-col">
+        <div class="grow"></div>
+        <div class="chat chat-start">
+            <div class="chat-image avatar">
+              <div class="w-10 rounded-full">
+                <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F11%2Frevenge-of-the-sith-2000.jpg&q=60" />
+              </div>
+            </div>
+            <div class="chat-header">
+              Obi-Wan Kenobi
+              <time class="text-xs opacity-50">12:45</time>
+            </div>
+            <div class="chat-bubble">You were the Chosen One!</div>
+            <div class="chat-footer opacity-50">
+              Delivered
+            </div>
+          </div>
+          <div class="chat chat-end">
+            <div class="chat-image avatar">
+              <div class="w-10 rounded-full">
+                <img src="https://i.pinimg.com/736x/61/f5/f7/61f5f71c597e849f0d0b20728af95e62--assassins-blade-hayden-christensen.jpg" />
+              </div>
+            </div>
+            <div class="chat-header">
+              Anakin
+              <time class="text-xs opacity-50">12:46</time>
+            </div>
+            <div class="chat-bubble">I hate you!</div>
+            <div class="chat-footer opacity-50">
+              Seen at 12:46
+            </div>
+          </div>
+        
+    </div>
+    <div class="flex-none">
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text">Text Input</span>
+                <!-- <span class="label-text-alt">Alt label</span> -->
+            </label>
+            <textarea class="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+            <label class="label">
+                
+                <span class="label-text-alt">
+                    to add new line : <kbd class="kbd">shift</kbd>
+                    +
+                    <kbd class="kbd">enter</kbd>
+                    
+                </span>
+                <span class="label-text-alt"><button class="btn btn-primary">Send</button>
+                </span>
+            </label>
+        </div>
+    </div>
+   
+</div>
+
+
+
+
+
+{% endblock %}
