@@ -141,9 +141,11 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 #celery
 CELERY_TIMEZONE = "Australia/Tasmania"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
+WSGI_APPLICATION = 'project.wsgi.app'
