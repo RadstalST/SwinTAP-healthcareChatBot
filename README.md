@@ -20,14 +20,18 @@ sequenceDiagram
     participant django
     participant celery
     participant database
-    
-    browser->>+django: HTTP get
+    browser->>+django: subscribe to chat the socket <br/>or keep retrieving <br/>"Chat Message" every n seconds
+    browser->>+django: HTTP post
     django->>django: process request
-    django->>celery: send prompt generation task
-    django->>-browser: return sucessful
+    django->>+celery: send generation task
+    django->>-browser: return "in progress"
     celery->>celery: process task
     celery->>database: save prompt and meta data as message
+    celery->>-django: complete
+    django->>-browser: return "complete"
+
 ```
+[socket](https://stackoverflow.com/questions/4190186/can-i-use-socket-io-with-django)
 ## Prompt Generation Task
 ```mermaid
 flowchart TD
