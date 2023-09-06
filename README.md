@@ -4,8 +4,61 @@
 
 This is a project for TAP course in University of Swinburne. The project aim is to build a chatbot that could respond with a proper answer to the user's question about medical concerns. The chatbot is built using OpenAI GPT-4 and the server is built using Django. 
 
-# Architecture
+# Architecture and Data Flow
+![Architecture](./docs/architecture.png)
 
+The Architecture uses Django as Frontend Server and API server. Additionally, celery was integrated into the architecture to handle asynchronous tasks such as prompt generation and chat message retrieval. The architecture uses PostgreSQL/SQLite as the database.
+
+
+
+# API
+## Prompt Generation
+```mermaid
+sequenceDiagram
+
+    participant browser
+    participant django
+    participant celery
+    participant database
+    
+    browser->>+django: HTTP get
+    django->>django: process request
+    django->>celery: send prompt generation task
+    django->>-browser: return sucessful
+    celery->>celery: process task
+    celery->>database: save prompt and meta data as message
+```
+## Prompt Generation Task
+```mermaid
+flowchart TD
+    A((Start)) --> B[Retrieve message]
+    B --> C[Send prompt to GPT-4]
+     
+    C --> E[Retrieve response]
+    E --> H[explain response]
+    E --> F[Save response]
+    H --> I[save explanation] -->G
+    F --> G((End))
+```
+
+## Chat Message
+```mermaid
+sequenceDiagram
+
+    participant browser
+    participant django
+    participant celery
+    participant database
+
+    browser->>+django: HTTP get
+    django->>django: process request
+    django->>database: retrieve messages
+    database->>django: return messages
+    django->>django: process messages
+    django->>-browser: return messages
+
+
+```
 # Project Structure
 ```
 
